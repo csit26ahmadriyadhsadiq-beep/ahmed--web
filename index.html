@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="موسوعة ARR.web - مرجع شامل للشخصيات والعلوم والتاريخ والشركات والحضارات" />
+    <meta name="theme-color" content="#1a73e8" />
+    <title>ARR.web - موسوعة العالم</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-weight='bold' fill='%231a73e8'>A</text></svg>" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">ARR.web</div>
+      <button id="toggleLanguageBtn" onclick="toggleLanguage()">English</button>
+      <input
+        type="text"
+        id="search"
+        onkeyup="search()"
+        placeholder="ابحث في الموسوعة..."
+      />
+    </header>
+
+    <section class="hero">
+      <h1>موسوعة ARR.web</h1>
+      <p>شخصيات • علوم • تاريخ • شركات • حضارات</p>
+    </section>
+
+    <section id="grid" class="grid"></section>
+
+    <!-- POPUP -->
+
+    <div id="popup" class="popup">
+      <div class="box">
+        <span onclick="closePopup()">×</span>
+        <h2 id="title"></h2>
+        <p id="text"></p>
+        <pre id="extra"></pre>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      function toggleLanguage() {
+        var html = document.documentElement;
+        if (html.lang === 'ar') {
+          translateToEnglish();
+          html.lang = 'en';
+          document.getElementById('toggleLanguageBtn').textContent = 'العربية';
+        } else {
+          translateToArabic();
+          html.lang = 'ar';
+          document.getElementById('toggleLanguageBtn').textContent = 'English';
+        }
+      }
+
+      function translateToEnglish() {
+        var h1 = document.querySelector('.hero h1');
+        var p = document.querySelector('.hero p');
+        var search = document.getElementById('search');
+
+        h1.textContent = 'ARR.web Encyclopedia';
+        p.textContent = 'People • Science • History • Companies • Civilizations';
+        search.placeholder = 'Search the encyclopedia...';
+        document.title = 'ARR.web - World Encyclopedia';
+      }
+
+      function translateToArabic() {
+        var h1 = document.querySelector('.hero h1');
+        var p = document.querySelector('.hero p');
+        var search = document.getElementById('search');
+
+        h1.textContent = 'موسوعة ARR.web';
+        p.textContent = 'شخصيات • علوم • تاريخ • شركات • حضارات';
+        search.placeholder = 'ابحث في الموسوعة...';
+        document.title = 'ARR.web - موسوعة العالم';
+      }
+    </script>
+  </body>
+</html>
